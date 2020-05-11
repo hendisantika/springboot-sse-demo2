@@ -13,6 +13,8 @@ $(document).ready(function () {
             countryName = "USD";
         } else if ("AUD - Australia" === $(this).html()) {
             countryName = "AUD";
+        } else if ("ID - Indonesia" === $(this).html()) {
+            countryName = "ID";
         }
         connect(countryName);
     });

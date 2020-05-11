@@ -31,8 +31,11 @@ public class CoinEventService {
     }
 
     private String changePrice(String country) {
-        if (country.equalsIgnoreCase("AUD"))
+        if (country.equalsIgnoreCase("AUD")) {
             return "$ " + Math.round(10 + (100 - 10) * new Random().nextDouble()) + " AUD";
+        } else if (country.equalsIgnoreCase("ID")) {
+            return "Rp " + Math.round(10 + (100 - 10) * new Random().nextDouble()) + " ID";
+        }
 
         return "$ " + Math.round(100 + (1000 - 100) * new Random().nextDouble()) + " USD";
     }
