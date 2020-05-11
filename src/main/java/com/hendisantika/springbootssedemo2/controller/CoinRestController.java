@@ -5,7 +5,11 @@ import com.hendisantika.springbootssedemo2.service.CoinEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,4 +46,8 @@ public class CoinRestController {
         coinsList.add(coin2);
     }
 
+    @GetMapping(value = "/coins/{country}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<List<Coins>> coinEvents(@PathVariable String country) {
+        return coinEventService.getCoinsEvents(coinsList, country);
+    }
 }
